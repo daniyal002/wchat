@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import React from "react";
+import LogIn from "./pages/LogIn/LogIn";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Main from "./pages/Main/Main";
 function App() {
+  const [idInstance, setIdInstance] = React.useState("");
+  const [apiTokenInstance, setApiTokenInstance] = React.useState("");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <LogIn
+                idInstance={idInstance}
+                setIdInstance={setIdInstance}
+                apiTokenInstance={apiTokenInstance}
+                setApiTokenInstance={setApiTokenInstance}
+              />
+            }
+          />
+          <Route path="/Main" element={<Main />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
