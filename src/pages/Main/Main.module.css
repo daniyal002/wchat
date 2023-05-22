@@ -1,0 +1,13 @@
+.main__interface_menu {
+  display: flex;
+  flex-direction: row;
+}
+
+.main__interface_menu_customer {
+  width: 50%;
+  display: flex;
+}
+.main__interface_menu_chat {
+  width: 50%;
+  display: flex;
+}

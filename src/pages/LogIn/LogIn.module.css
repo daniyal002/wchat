@@ -3,15 +3,3 @@
   display: flex;
   align-items: center;
 }
-
-.logIn__form {
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-}
-
-.logIn__form__idInstance,
-.logIn__form__apiTokenInstance {
-  display: flex;
-  justify-content: space-between;
-}

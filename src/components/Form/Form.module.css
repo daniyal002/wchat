@@ -1,14 +1,19 @@
 .form {
-  max-width: 300px;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   row-gap: 20px;
 }
 
 .form__idInstance,
-.form__apiTokenInstance {
+.form__apiTokenInstance,
+.form__phone {
   display: flex;
   justify-content: space-between;
+}
+
+.form__phone_select_input {
+  display: flex;
 }
 
 .form__error {
