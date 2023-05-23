@@ -33,7 +33,7 @@ const Customer = ({ numbers, onClick }) => {
     };
 
     getAvatar();
-  }, []);
+  }, [numbers]);
 
   const handleButtonClick = () => {
     if (numbers) {

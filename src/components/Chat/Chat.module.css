@@ -1,0 +1,64 @@
+.chat__list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  row-gap: 15px;
+}
+
+.chat__list_item {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.chat__list_item_incoming {
+  display: flex;
+}
+
+.chat__list_item_outgoing {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.chat__list_item_outgoing_text {
+  background-color: #d9fdd3;
+  padding: 8px;
+  border-radius: 10px;
+  max-width: 300px;
+}
+
+.chat__list_item_incoming_text {
+  background-color: #ffffff;
+  padding: 8px;
+  border-radius: 10px;
+  max-width: 300px;
+  text-align: left;
+}
+
+.sendMessage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #e9edef;
+  border-radius: 8px;
+}
+
+.sendMessage__input {
+  font-size: 18px;
+  outline: none;
+  padding: 9px 12px;
+  margin: 5px 8px;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 8px;
+  width: 80%;
+}
+
+.sendMessage__btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}

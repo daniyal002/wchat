@@ -19,7 +19,7 @@ const Main = () => {
   React.useEffect(() => {
     const getMessage = async () => {
       try {
-        const url = `https://api.green-api.com/waInstance${idInstance}/lastIncomingMessages/${apiTokenInstance}`;
+        const url = `https://api.green-api.com/waInstance${idInstance}/lastIncomingMessages/${apiTokenInstance}?minutes=10000`;
 
         const response = await axios.get(url);
         setMessages(response.data);
@@ -35,9 +35,9 @@ const Main = () => {
     const personalChats = messages.filter((message) =>
       message.chatId.endsWith("@c.us")
     );
-    const personalChatNumbers = personalChats.map(
-      (message) => message.senderId
-    );
+    const personalChatNumbers = [
+      ...new Set(personalChats.map((message) => message.senderId)),
+    ];
     setCustomer(personalChatNumbers);
   }, [messages]);
 
@@ -49,11 +49,9 @@ const Main = () => {
     <div className={style.main}>
       <Header />
       <div className="container">
-        <h1 className={style.main__header_chat}>Чаты</h1>
-
         <div className={style.main__interface_menu}>
           <div className={style.main__interface_menu_customer}>
-            <ul>
+            <ul className={style.customer_list}>
               {customer.map((number, index) => (
                 <Customer
                   key={index}
@@ -67,12 +65,10 @@ const Main = () => {
           <div className={style.main__interface_menu_chat}>
             {selectedNumber && (
               <div>
-                <h2>Выбранный контакт: {selectedNumber}</h2>
-                <Chat
-                  messages={messages.filter(
-                    (message) => message.senderId === selectedNumber
-                  )}
-                />
+                <h2>
+                  Выбранный контакт: {selectedNumber.replace("@c.us", "")}
+                </h2>
+                <Chat number={selectedNumber} />
               </div>
             )}
           </div>

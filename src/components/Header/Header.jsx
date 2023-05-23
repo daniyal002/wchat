@@ -48,7 +48,9 @@ const Header = () => {
       <div className="container">
         <div className="header__logo">
           <img src={avatarUrl} alt="Avatar" className="logo_img" />
-          <div className="logo_title">+{youPhoneValide}</div>
+          <div className="logo_title">
+            Ваш номер телефона: +{youPhoneValide}
+          </div>
         </div>
       </div>
     </div>

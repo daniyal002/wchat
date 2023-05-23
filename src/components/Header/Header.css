@@ -1,13 +1,31 @@
 .header {
-  margin-top: 20px;
+  padding: 10px;
+  background-color: #43d854;
 }
 
 .header__logo {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   column-gap: 20px;
 }
 .logo_img {
-  width: 100px;
+  width: 80px;
   border-radius: 100%;
+}
+
+.logo_title {
+  color: #fff;
+  font-size: 18px;
+  border: 2px solid #ffffff;
+  padding: 10px;
+  border-radius: 15px;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.logo_title:hover {
+  transform: scale(1.1);
+  background-color: #ffffff;
+  color: #43d854;
 }
