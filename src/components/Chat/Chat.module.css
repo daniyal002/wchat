@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  row-gap: 15px;
+  row-gap: 5px;
 }
 
 .chat__list_item {
@@ -11,6 +11,7 @@
   flex-wrap: wrap;
   flex-direction: column;
   align-items: stretch;
+  flex-grow: 1;
 }
 
 .chat__list_item_incoming {
@@ -28,6 +29,7 @@
   padding: 8px;
   border-radius: 10px;
   max-width: 300px;
+  text-align: right;
 }
 
 .chat__list_item_incoming_text {
@@ -44,6 +46,7 @@
   justify-content: space-around;
   background-color: #e9edef;
   border-radius: 8px;
+  flex-grow: 1;
 }
 
 .sendMessage__input {

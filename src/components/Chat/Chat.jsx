@@ -11,32 +11,33 @@ const Chat = ({ number }) => {
   const [chatList, setChatList] = React.useState([]);
   const [message, setMessage] = React.useState("");
 
+  const getChat = async () => {
+    try {
+      const url = `https://api.green-api.com/waInstance${idInstance}/getChatHistory/${apiTokenInstance}`;
+
+      const payload = {
+        chatId: number,
+        count: 10,
+      };
+
+      const headers = {
+        "Content-Type": "application/json",
+      };
+
+      const response = await axios
+        .post(url, payload, { headers })
+        .then((data) => {
+          setChatList(data.data.reverse());
+          console.log(data.data);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   React.useEffect(() => {
-    const getChat = async () => {
-      try {
-        const url = `https://api.green-api.com/waInstance${idInstance}/getChatHistory/${apiTokenInstance}`;
-
-        const payload = {
-          chatId: number,
-          count: 10,
-        };
-
-        const headers = {
-          "Content-Type": "application/json",
-        };
-
-        const response = await axios
-          .post(url, payload, { headers })
-          .then((data) => {
-            setChatList(data.data.reverse());
-            console.log(data.data);
-          });
-      } catch (error) {
-        console.log(error);
-      }
-    };
     getChat();
-  }, [number]);
+  }, [number, message]);
 
   const sendMessage = async (number, message) => {
     try {
@@ -56,12 +57,15 @@ const Chat = ({ number }) => {
         .then((data) => {
           console.log(data.data);
         });
+      await getChat();
+      setMessage("");
     } catch (error) {
       console.log(error);
     }
   };
   return (
     <ul className={style.chat__list}>
+      <h2>Выбранный контакт: {number.replace("@c.us", "")}</h2>
       {chatList.map((chatItem, index) => (
         <div key={index} className={style.chat__list_item}>
           {chatItem.type === "incoming" ? (
@@ -79,8 +83,7 @@ const Chat = ({ number }) => {
           )}
         </div>
       ))}
-      <div className={style.chat__list_item} style={{ flexGrow: 1 }}></div>{" "}
-      {/* Добавлен пустой элемент с flex-grow: 1 */}
+
       <div className={style.sendMessage}>
         <input
           type="text"
@@ -95,7 +98,6 @@ const Chat = ({ number }) => {
           className={style.sendMessage__btn}
           onClick={() => {
             sendMessage(number, message);
-            setMessage("");
           }}
         >
           <svg

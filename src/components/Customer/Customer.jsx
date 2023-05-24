@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./Customer.module.css";
 import axios from "axios";
+import avatar from "../../assets/avatar.jpg";
 
 const Customer = ({ numbers, onClick }) => {
   const [idInstance, setIdInstance] = React.useState(
@@ -42,19 +43,22 @@ const Customer = ({ numbers, onClick }) => {
   };
 
   return (
-    <li className={style.customer_list_item}>
-      <img
-        src={avatarUrl}
-        alt="Avatar"
-        className={style.customer_list_item_img}
-      />
-      <button
-        className={style.customer_list_item_btn}
-        onClick={() => handleButtonClick()}
-      >
-        +{numbers.replace("@c.us", "")}
-      </button>
-    </li>
+    <>
+      <li className={style.customer_list_item}>
+        <img
+          src={avatarUrl ? avatarUrl : avatar}
+          alt="Avatar"
+          className={style.customer_list_item_img}
+        />
+        <button
+          className={style.customer_list_item_btn}
+          onClick={() => handleButtonClick()}
+        >
+          +{numbers.replace("@c.us", "")}
+        </button>
+      </li>
+      <hr className={style.customer_list_item_hr} />
+    </>
   );
 };
 
